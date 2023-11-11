@@ -55,6 +55,14 @@ internal class PhotoEditorImpl @SuppressLint("ClickableViewAccessibility") const
         addToEditor(sticker)
     }
 
+    override fun addMainImage(desiredImage: Bitmap): Sticker {
+        val multiTouchListener = getMultiTouchListener(true)
+        val sticker = Sticker(photoEditorView, multiTouchListener, viewState, mGraphicManager)
+        sticker.buildView(desiredImage)
+        addToEditor(sticker)
+        return sticker
+    }
+
     override fun addText(text: String, colorCodeTextView: Int) {
         addText(null, text, colorCodeTextView)
     }

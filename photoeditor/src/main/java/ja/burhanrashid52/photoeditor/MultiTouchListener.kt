@@ -17,7 +17,7 @@ import kotlin.math.min
  *
  *
  */
-internal class MultiTouchListener(
+class MultiTouchListener(
     deleteView: View?,
     photoEditorView: PhotoEditorView,
     photoEditImageView: ImageView?,
@@ -46,6 +46,9 @@ internal class MultiTouchListener(
     private var mOnGestureControl: OnGestureControl? = null
     private val mOnPhotoEditorListener: OnPhotoEditorListener?
     private val viewState: PhotoEditorViewState
+
+    var bringToFront = true;
+
     override fun onTouch(view: View, event: MotionEvent): Boolean {
         mScaleGestureDetector.onTouchEvent(view, event)
         mGestureListener.onTouchEvent(event)
@@ -65,7 +68,9 @@ internal class MultiTouchListener(
                 if (deleteView != null) {
                     deleteView.visibility = View.VISIBLE
                 }
-                view.bringToFront()
+                if (bringToFront) {
+                    view.bringToFront()
+                }
                 firePhotoEditorSDKListener(view, true)
             }
             MotionEvent.ACTION_MOVE ->
@@ -171,12 +176,12 @@ internal class MultiTouchListener(
         var maximumScale = 0f
     }
 
-    internal interface OnMultiTouchListener {
+    interface OnMultiTouchListener {
         fun onEditTextClickListener(text: String, colorCode: Int)
         fun onRemoveViewListener(removedView: View)
     }
 
-    internal interface OnGestureControl {
+    interface OnGestureControl {
         fun onClick()
         fun onLongClick()
     }

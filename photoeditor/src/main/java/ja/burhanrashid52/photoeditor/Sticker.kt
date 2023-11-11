@@ -9,7 +9,7 @@ import android.widget.ImageView
  *
  * @author <https:></https:>//github.com/burhanrashid52>
  */
-internal class Sticker(
+class Sticker(
     private val mPhotoEditorView: PhotoEditorView,
     private val mMultiTouchListener: MultiTouchListener,
     private val mViewState: PhotoEditorViewState,
@@ -34,6 +34,11 @@ internal class Sticker(
 
     override fun setupView(rootView: View) {
         imageView = rootView.findViewById(R.id.imgPhotoEditorImage)
+    }
+
+    fun disableBringToFront() {
+        //rootView.setOnTouchListener(null)
+        mMultiTouchListener.bringToFront = false
     }
 
     init {
