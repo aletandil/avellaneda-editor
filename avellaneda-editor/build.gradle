@@ -1,5 +1,9 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'maven-publish'
+}
+
 
 android {
     namespace 'com.avellanedaaltoque.libraries'
@@ -59,13 +63,15 @@ dependencies {
     androidTestImplementation 'org.mockito:mockito-android:5.1.1'
 }
 
-ext {
-    PUBLISH_GROUP_ID = 'com.avellanedaaltoque.libraries'
-    PUBLISH_VERSION = '1.0.0'
-    PUBLISH_ARTIFACT_ID = 'photoeditormercados'
-}
-
-apply from: "${rootProject.projectDir}/scripts/publish-mavencentral.gradle"
-repositories {
-    mavenCentral()
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.avellaneda.libraries'
+                artifactId = 'avellaneda-editor'
+                version = '0.0.1'
+            }
+        }
+    }
 }

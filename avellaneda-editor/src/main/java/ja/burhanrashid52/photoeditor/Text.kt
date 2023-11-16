@@ -4,32 +4,32 @@ import android.graphics.Typeface
 import android.view.Gravity
 import android.view.View
 import android.widget.TextView
+import com.avellanedaaltoque.libraries.R
 
 /**
  * Created by Burhanuddin Rashid on 14/05/21.
  *
  * @author <https:></https:>//github.com/burhanrashid52>
  */
-internal class Emoji(
+internal class Text(
     private val mPhotoEditorView: PhotoEditorView,
     private val mMultiTouchListener: MultiTouchListener,
     private val mViewState: PhotoEditorViewState,
-    graphicManager: GraphicManager?,
-    private val mDefaultEmojiTypeface: Typeface?
+    private val mDefaultTextTypeface: Typeface?,
+    private val mGraphicManager: GraphicManager
 ) : Graphic(
     context = mPhotoEditorView.context,
-    graphicManager = graphicManager,
-    viewType = ViewType.EMOJI,
+    graphicManager = mGraphicManager,
+    viewType = ViewType.TEXT,
     layoutId = R.layout.view_photo_editor_text
 ) {
-    private var txtEmoji: TextView? = null
-    fun buildView(emojiTypeface: Typeface?, emojiName: String?) {
-        txtEmoji?.apply {
-            if (emojiTypeface != null) {
-                typeface = emojiTypeface
-            }
-            textSize = 56f
-            text = emojiName
+
+    private var mTextView: TextView? = null
+
+    fun buildView(text: String?, styleBuilder: TextStyleBuilder?) {
+        mTextView?.apply {
+            this.text = text
+            styleBuilder?.applyStyle(this)
         }
     }
 
@@ -41,14 +41,18 @@ internal class Emoji(
     }
 
     override fun setupView(rootView: View) {
-        txtEmoji = rootView.findViewById(R.id.tvPhotoEditorText)
-        txtEmoji?.run {
-            if (mDefaultEmojiTypeface != null) {
-                typeface = mDefaultEmojiTypeface
-            }
+        mTextView = rootView.findViewById(R.id.tvPhotoEditorText)
+        mTextView?.run {
             gravity = Gravity.CENTER
-            setLayerType(View.LAYER_TYPE_SOFTWARE, null)
+            typeface = mDefaultTextTypeface
         }
+    }
+
+    override fun updateView(view: View) {
+        val textInput = mTextView?.text.toString()
+        val currentTextColor = mTextView?.currentTextColor ?: 0
+        val photoEditorListener = mGraphicManager.onPhotoEditorListener
+        photoEditorListener?.onEditTextChangeListener(view, textInput, currentTextColor)
     }
 
     init {

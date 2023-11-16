@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager
+import com.avellaneda.libraries.R
 import com.burhanrashid52.photoediting.EmojiBSFragment.EmojiListener
 import com.burhanrashid52.photoediting.StickerBSFragment.StickerListener
 import com.burhanrashid52.photoediting.base.BaseActivity

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.core.content.ContextCompat
+import com.avellaneda.libraries.R
 import java.util.ArrayList
 
 /**

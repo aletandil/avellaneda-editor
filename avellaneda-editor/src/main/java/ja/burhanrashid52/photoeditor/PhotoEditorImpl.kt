@@ -12,6 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.IntRange
 import androidx.annotation.RequiresPermission
+import com.avellanedaaltoque.libraries.R
 import ja.burhanrashid52.photoeditor.PhotoEditorImageViewListener.OnSingleTapUpCallback
 import ja.burhanrashid52.photoeditor.shape.ShapeBuilder
 import kotlinx.coroutines.Dispatchers

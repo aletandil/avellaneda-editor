@@ -3,6 +3,7 @@ package ja.burhanrashid52.photoeditor
 import android.graphics.Bitmap
 import android.view.View
 import android.widget.ImageView
+import com.avellanedaaltoque.libraries.R
 
 /**
  * Created by Burhanuddin Rashid on 14/05/21.

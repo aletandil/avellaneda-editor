@@ -17,6 +17,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.avellaneda.libraries.R
 import com.burhanrashid52.photoediting.ColorPickerAdapter.OnColorPickerClickListener
 
 /**

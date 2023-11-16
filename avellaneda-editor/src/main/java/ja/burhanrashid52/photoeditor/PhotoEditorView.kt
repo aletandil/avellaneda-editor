@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
+import com.avellanedaaltoque.libraries.R
 import ja.burhanrashid52.photoeditor.FilterImageView.OnImageChangedListener
 
 /**

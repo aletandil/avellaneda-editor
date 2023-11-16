@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
+import com.avellanedaaltoque.libraries.R
 import ja.burhanrashid52.photoeditor.MultiTouchListener.OnGestureControl
 
 /**
